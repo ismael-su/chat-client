@@ -1,0 +1,22 @@
+<div class="container card">
+  <div class="header">
+    Smart Chatter
+  </div>
+  <div class="body">
+    <div *ngFor="let item of messages" >
+      <app-message *ngIf="item.author !== 'server'" cls="{{item.author}}" message="{{item.message}}">
+
+      </app-message>
+      <p id="server_alert" *ngIf="item.author === 'server'">
+        {{item.message}}
+      </p>
+
+    </div>
+  </div>
+  <div class="footer">
+    <textarea id="input" (input)="onInput($event)"></textarea>
+    <button class="icon-container" (click)="onMessageSend()">
+      <i id="icon" class="material-icons">send</i>
+    </button>
+  </div>
+</div>
